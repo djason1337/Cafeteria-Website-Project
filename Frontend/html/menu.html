@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Eats</title>
+    <link rel="stylesheet" href="../css/menu.css">
+</head>
+<body>
+    <header>
+        <h1 class="hvr-grow-rotate">Good Eats</h1>
+        <p class="hover-underline-animation">Your go-to place for delicious meals!</p>
+        
+    </header>
+
+    <nav>
+        <ul>
+          <li><a href="home.html"><img class="logo" src="../image/logo.jpg" width="75" height="75" alt="Logo"></a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <section id="featured-items">
+        <h2 class="bouncing-text">Featured Items</h2>
+        <div class="item-container">
+          <img src="../image/cheeseburger.jpg" alt="Delicious Burger" width="300" height="300">
+          <h3>Classic Cheeseburger</h3>
+          <p>Our juicy beef patty with melted cheese.</p>
+        </div>
+      </section>
+      <div class="menu-wrapper">
+        <section id="menu-tabs">
+          <ul class="menu-tabs-list">
+            <li class="active"><a href="#breakfast">Breakfast</a></li>
+            <li><a href="#lunch">Lunch</a></li>
+            <li><a href="#dinner">Dinner</a></li>
+          </ul>
+          <div class="menu-content">
+            <div id="breakfast" style="display: block;">
+              <h3>Breakfast Menu</h3>
+              <img src="../image/eggs.jpg" width="75" height="75">
+              <p>Scrambled Eggs - $5.00</p>
+              <img src="../image/pancake.jpg" width="75" height="75">
+              <p>Pancakes with Syrup - $4.50</p>
+            </div>
+            <div id="lunch" style="display: none;">
+              <h3>Lunch Menu</h3>
+              <img src="../image/cheeseburger.jpg" width="75" height="75">
+              <p>Cheeseburger* - $7.00</p>
+              <img src="../image/cs_sandwich.jpg" width="75" height="75">
+              <p>Chicken Salad Sandwich* - $6.50</p>
+            </div>
+            <div id="dinner" style="display: none;">
+              <h3>Dinner Menu</h3>
+              <img src="../image/salmon.jpg" width="75" height="75">
+              <p>Salmon with Roasted Vegetables* - $12.00</p>
+              <img src="../image/pasta.jpg" width="75" height="75">
+              <p>Pasta Primavera - $10.00</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <section class="dietary">
+        <p>*Dietary restrictions: Fish, Dairy, </p>
+      </section>
+
+      <section class="location">
+
+
+        <h4>Location: University of Houston Sugarland Campus</h4>
+        <div id="map" style="width:50%; height:400px; margin-left: 375px; margin-bottom: 50px;"></div>
+        <a href="order.html" style="text-decoration: none">
+          <button>
+              <span class="text">Order now!</span>
+              
+          </button>
+      </a>
+      </section>
+
+      
+
+      <script>
+        function initMap() {
+              let uhSugarland = {lat:29.575569744894334, lng:-95.65045044235781};
+              let uhMap = new google.maps.Map(document.getElementById("map"),{zoom: 8, center: uhSugarland});
+              let marker = new google.maps.Marker({position: uhSugarland, map:uhMap});
+        }
+      </script>
+
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7n8kEKlNZ15MPu9jZXHnkLy4-jActJ2E&callback=initMap"></script>
+
+    <footer>
+      <section>
+        <p>
+          Questions? Email us at GoodEats@uh.edu
+          
+        </p>
+      </section>
+        <p>© 2024 Good Eats</p>
+    </footer>
+
+    
+
+    <script>
+      // get menu tab elements
+      const menuTabs = document.querySelectorAll('.menu-tabs-list li');
+      
+      // get menu content divs
+      const menuContent = document.querySelector('.menu-content').children;
+      
+      menuTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default anchor tag behavior
+      
+          // remove active class from all tabs
+          menuTabs.forEach(t => t.classList.remove('active'));
+      
+          // add active class to clicked tab
+          tab.classList.add('active');
+      
+          // hide all menu content divs
+          for (let i = 0; i < menuContent.length; i++) {
+            menuContent[i].style.display = 'none';
+          }
+      
+          // show the content div corresponding to the clicked tab
+          const contentId = tab.querySelector('a').getAttribute('href');
+          document.querySelector(contentId).style.display = 'block';
+        });
+      });
+      </script>
+</body>
+</html>

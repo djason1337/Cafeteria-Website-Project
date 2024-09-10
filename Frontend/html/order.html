@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Eats</title>
+    <link rel="stylesheet" href="../css/order.css">
+</head>
+<body>
+    <header>
+        <h1 class="hvr-grow-rotate">Good Eats</h1>
+        <p class="hover-underline-animation">Your go-to place for delicious meals!</p>
+        
+    </header>
+
+    <nav>
+        <ul>
+          <li><a href="home.html"><img class="logo" src="../image/logo.jpg" width="75" height="75" alt="Logo"></a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <section id="order">
+      <h1>Order Now!</h1>
+      <form action='/submit' method="POST" id="orderForm">
+        <h3>Breakfast</h3>
+    
+        <div class="item-group"></div>
+        <label for="item1" id="item1" name="item1">Scrambled Eggs ~ 5.00</label>
+        <input type="hidden" id="item1_price" name="item1_price" value="5.00">
+        <input type="number" id="item1_qty" name="item1_qty" value="-" size="3" max="10">
+        <img class="pic-group" src="../image/eggs.jpg" width="75" height="75">
+    
+        <div class="item-group"></div>
+        <label for="item2" id="item2" name="item2">Pancakes with Syrup ~ 4.50</label>
+        <input type="hidden" id="item2_price" name="item2_price" value="4.50">
+        <input type="number" id="item2_qty" name="item2_qty" value="-" size="3" max="10">
+        <img class="pic-group" src="../image/pancake.jpg" width="75" height="75">
+    
+        <h3>Lunch</h3>
+        <div class="item-group"></div>
+        <label id="item3" name="item3">Cheeseburger ~ 7.00</label>
+        <input type="hidden" id="item3_price" name="item3_price" value="7.00">
+        <input type="number" id="item3_qty" name="item3_qty" value="-" size="3" max="10">
+        <img class="pic-group" src="../image/cheeseburger.jpg" width="75" height="75">
+    
+        <div class="item-group"></div>
+        <label id="item4" name="item4">Chicken Salad Sandwich ~ 6.50</label>
+        <input type="hidden" id="item4_price" name="item4_price" value="6.50">
+        <input type="number" id="item4_qty" name="item4_qty" value="-" size="3" max="10">
+        <img class="pic-group" src="../image/cs_sandwich.jpg" width="75" height="75">
+    
+        <h3>Dinner</h3>
+        <div class="item-group"></div>
+        <label id ="item5" name="item5">Salmon with Roasted Vegetables ~ 12.00</label>
+        <input type="hidden" id="item5_price" name="item5_price" value="12.00">
+        <input type="number" id="item5_qty" name="item5_qty" value="-" size="3" max="10">
+        <img class="pic-group" src="../image/salmon.jpg" width="75" height="75">
+    
+        <div class="item-group"></div>
+        <label id ="item6" name="item6">Pasta Primavera ~ 10.00</label>
+        <input type="hidden" id="item6_price" name="item6_price" value="10.00">
+        <input type="number" id="item6_qty" name="item6_qty" value="-" size="3" max="10">
+        <img class="pic-group" src="../image/pasta.jpg" width="75" height="75">
+    
+        <div class="item-group"></div>
+        <button type="submit" id="orderbutton">Submit Order</button>
+      </form>
+    </section>
+    
+
+    <script>
+      document.getElementById("orderForm").addEventListener("submit", function(event) {
+          const itemQuantities = [
+              parseInt(document.getElementById("item1_qty").value),
+              parseInt(document.getElementById("item2_qty").value),
+              parseInt(document.getElementById("item3_qty").value),
+              parseInt(document.getElementById("item4_qty").value),
+              parseInt(document.getElementById("item5_qty").value),
+              parseInt(document.getElementById("item6_qty").value)
+          ];
+  
+          const validQuantities = itemQuantities.filter(quantity => !isNaN(quantity) && quantity >= 1 && quantity <= 10);
+  
+          if (validQuantities.length === 0) {
+              alert("Please enter a valid quantity between 1 and 10 for at least one item.");
+              event.preventDefault(); // Prevent form submission
+          } else {
+              // Display quantities for each item
+              const itemNames = ["Scrambled Eggs", "Pancakes with Syrup", "Cheeseburger", "Chicken Salad Sandwich", "Salmon with Roasted Vegetables", "Pasta Primavera"];
+              let orderSummary = "Your order has been submitted! Thank you for your business.\n\nOrder receipt:\n";
+  
+              for (let i = 0; i < validQuantities.length; i++) {
+                  orderSummary += `${itemNames[i]}: ${validQuantities[i]}\n`;
+              }
+  
+              alert(orderSummary);
+              
+          }
+      });
+  </script>
+  
+  
+
+    <footer>
+      <section>
+        <p>
+          Questions? Email us at GoodEats@uh.edu
+          
+        </p>
+      </section>
+        <p>© 2024 Good Eats</p>
+    </footer>
+</body>
+</html>
