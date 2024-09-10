@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Eats</title>
+    <link rel="stylesheet" href="../css/feedback.css">
+</head>
+<body>
+    <header>
+        <h1 class="hvr-grow-rotate">Good Eats</h1>
+        <p class="hover-underline-animation">Your go-to place for delicious meals!</p>
+        
+    </header>
+
+    <nav>
+        <ul>
+          <li><a href="home.html"><img class="logo" src="../image/logo.jpg" width="75" height="75" alt="Logo"></a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+
+      
+
+    <section>
+        <h2 id="h2">Feedback</h2>
+        <form id="feedbackForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="feedback">Feedback:</label><br>
+            <textarea id="feedback" name="feedback" required></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+    
+            // Check if the form is valid
+            if (!event.target.checkValidity()) {
+                alert('Please fill out all fields before submitting.');
+                return;
+            }
+    
+            // If the form is valid, show the success message and submit the form
+            alert('Your feedback has been submitted successfully!');
+            event.target.submit();
+        });
+    </script>
+    
+
+
+    <footer>
+      <section>
+        <p>
+          Questions? Email us at GoodEats@uh.edu
+          
+        </p>
+      </section>
+        <p>© 2024 Good Eats</p>
+    </footer>
+</body>
+</html>
